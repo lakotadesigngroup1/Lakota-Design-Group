@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lakota Design Group | Luxury Landscaping in San Jose, CA</title>
+<meta name="description" content="Lakota Design Group is a locally owned landscaping company in San Jose, CA offering landscape design, lighting, pavers, artificial turf, construction and project management.">
+<link rel="icon" href="https://lakotadesigngroup.com/wp-content/uploads/2026/06/Lakota-Logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07120d; --bg2:#0d1f16; --card:#112a1d; --line:rgba(212,175,106,.22);
+  --gold:#d4af6a; --gold2:#f1d9a0; --green:#2f9e63; --text:#e9efe9; --muted:#a3b5a9;
+  --radius:18px; --shadow:0 25px 60px -20px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+::selection{background:var(--gold);color:#07120d}
+::-moz-selection{background:var(--gold);color:#07120d}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;line-height:1.15;font-weight:700}
+.container{width:min(1180px,92%);margin:0 auto}
+section{padding:100px 0;position:relative}
+#bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55}
+main,header,footer{position:relative;z-index:2}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at 50% 40%,#10301f,#04100a 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;perspective:900px;transition:opacity .8s,visibility .8s}
+#loader.hide{opacity:0;visibility:hidden}
+#loader .ring{position:relative;width:200px;height:200px;transform-style:preserve-3d;animation:spin 5s linear infinite}
+#loader .ring span{position:absolute;inset:0;border:1px solid var(--gold);border-radius:50%;opacity:.55}
+#loader .ring span:nth-child(2){transform:rotateY(60deg)}
+#loader .ring span:nth-child(3){transform:rotateY(120deg)}
+#loader .ring span:nth-child(4){transform:rotateX(90deg)}
+#loader img{position:absolute;left:50%;top:50%;width:150px;transform:translate(-50%,-50%);filter:drop-shadow(0 0 18px rgba(212,175,106,.5))}
+@keyframes spin{to{transform:rotateY(360deg) rotateX(20deg)}}
+#loader h2{font-family:'Orbitron',sans-serif;letter-spacing:.35em;font-size:1.05rem;color:var(--gold2);text-transform:uppercase;text-align:center;animation:glitch 2.2s infinite}
+#loader .bar{width:240px;height:3px;background:rgba(255,255,255,.1);overflow:hidden;border-radius:3px}
+#loader .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--gold));animation:load 2.1s forwards}
+#loader small{color:var(--muted);letter-spacing:.3em;font-size:.7rem;font-family:'Orbitron'}
+@keyframes load{to{width:100%}}
+@keyframes glitch{0%,92%,100%{text-shadow:none;transform:none}94%{text-shadow:3px 0 #2f9e63,-3px 0 #d4af6a;transform:translateX(2px)}96%{text-shadow:-3px 0 #2f9e63,3px 0 #d4af6a;transform:translateX(-2px)}}
+
+/* ---------- Header ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s;padding:14px 0}
+header.scrolled{background:rgba(7,18,13,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:8px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:58px;width:auto;object-fit:contain}
+.brand b{font-family:'Orbitron',sans-serif;font-size:.95rem;letter-spacing:.12em;line-height:1.2;text-transform:uppercase;background:linear-gradient(90deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand b small{display:block;font-size:.6rem;letter-spacing:.35em;color:var(--muted);-webkit-text-fill-color:var(--muted)}
+nav ul{list-style:none;display:flex;align-items:center;gap:6px}
+nav li{position:relative}
+nav a.l{display:block;padding:10px 14px;font-size:.88rem;font-weight:500;letter-spacing:.04em;border-radius:30px;transition:.3s;color:var(--text)}
+nav a.l:hover,nav a.l.active{color:var(--gold2);background:rgba(212,175,106,.1)}
+.dd{position:absolute;top:100%;left:0;min-width:270px;background:rgba(10,26,18,.97);border:1px solid var(--line);border-radius:14px;padding:10px;opacity:0;visibility:hidden;transform:translateY(12px) rotateX(-12deg);transform-origin:top;transition:.3s;box-shadow:var(--shadow)}
+nav li:hover>.dd{opacity:1;visibility:visible;transform:none}
+.dd a{display:block;padding:9px 14px;border-radius:9px;font-size:.88rem;color:var(--text)}
+.dd a:hover{background:rgba(212,175,106,.12);color:var(--gold2)}
+.cta-top{background:linear-gradient(135deg,var(--gold),#b88a3b);color:#07120d!important;font-weight:600;padding:10px 20px!important}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--gold2);width:46px;height:46px;border-radius:12px;font-size:1.4rem;cursor:pointer}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:50px;font-weight:600;font-size:.92rem;letter-spacing:.05em;cursor:pointer;border:0;transition:.35s;font-family:inherit}
+.btn.gold{background:linear-gradient(135deg,var(--gold2),var(--gold) 50%,#b88a3b);color:#07120d;box-shadow:0 12px 30px -10px rgba(212,175,106,.6)}
+.btn.gold:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 18px 40px -10px rgba(212,175,106,.8)}
+.btn.ghost{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
+.btn.ghost:hover{background:var(--gold);color:#07120d;transform:translateY(-4px)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:150px 0 90px;perspective:1200px}
+.hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.eyebrow{font-family:'Orbitron',sans-serif;font-size:.72rem;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;display:inline-flex;align-items:center;gap:12px;margin-bottom:20px}
+.eyebrow:before{content:"";width:40px;height:1px;background:var(--gold)}
+.hero h1{font-size:clamp(2.8rem,6vw,5.2rem);margin-bottom:22px}
+.hero h1 em{font-style:italic;background:linear-gradient(90deg,var(--gold2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:540px;margin-bottom:34px}
+.hero .btns{display:flex;gap:16px;flex-wrap:wrap}
+.stats{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap}
+.stats div b{display:block;font-family:'Cormorant Garamond';font-size:2.3rem;color:var(--gold2);line-height:1}
+.stats div span{font-size:.78rem;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+.hero-visual{position:relative;transform-style:preserve-3d;transition:transform .15s}
+.hero-visual .frame{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:0 50px 90px -30px #000,0 0 0 10px rgba(212,175,106,.05);aspect-ratio:4/5;background:var(--card)}
+.hero-visual .frame img{width:100%;height:100%;object-fit:cover}
+.hero-visual .chip{position:absolute;background:rgba(10,26,18,.88);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:16px;padding:14px 18px;font-size:.82rem;box-shadow:var(--shadow)}
+.hero-visual .chip b{display:block;color:var(--gold2);font-family:'Cormorant Garamond';font-size:1.3rem}
+.chip.c1{left:-34px;bottom:70px;transform:translateZ(70px)}
+.chip.c2{right:-20px;top:40px;transform:translateZ(90px)}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:.68rem;letter-spacing:.35em;color:var(--muted);font-family:'Orbitron'}
+.scroll-hint:after{content:"";display:block;width:1px;height:36px;margin:8px auto 0;background:linear-gradient(var(--gold),transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Common ---------- */
+.sec-head{text-align:center;max-width:720px;margin:0 auto 60px}
+.sec-head h2{font-size:clamp(2.1rem,4vw,3.3rem);margin-bottom:14px}
+.sec-head p{color:var(--muted)}
+.alt{background:linear-gradient(180deg,rgba(13,31,22,.85),rgba(7,18,13,.85))}
+.reveal{opacity:0;transform:perspective(900px) translateY(70px) rotateX(18deg) scale(.96);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.left{transform:perspective(900px) translateX(-80px) rotateY(18deg)}
+.reveal.right{transform:perspective(900px) translateX(80px) rotateY(-18deg)}
+.reveal.left.in,.reveal.right.in{transform:none}
+
+/* ---------- Service cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;perspective:1200px}
+.card{background:linear-gradient(160deg,var(--card),#0b1d14);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transform-style:preserve-3d;transition:transform .2s,box-shadow .4s,border-color .4s;will-change:transform}
+.card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.card .img{aspect-ratio:16/11;overflow:hidden;position:relative}
+.card .img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.card:hover .img img{transform:scale(1.12)}
+.card .img:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(7,18,13,.85))}
+.card .body{padding:26px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:1.65rem}
+.card p{color:var(--muted);font-size:.94rem;flex:1}
+.card .more{color:var(--gold2);font-weight:600;font-size:.86rem;letter-spacing:.08em;text-transform:uppercase}
+.center{text-align:center;margin-top:54px}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-img{position:relative}
+.about-img .a{border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+.about-img .a img{width:100%;aspect-ratio:5/4;object-fit:cover}
+.about-img .badge{position:absolute;right:-18px;bottom:-26px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#07120d;border-radius:20px;padding:20px 26px;text-align:center;box-shadow:var(--shadow)}
+.about-img .badge b{font-family:'Cormorant Garamond';font-size:2.4rem;display:block;line-height:1}
+.about-txt h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:20px}
+.about-txt p{color:var(--muted);margin-bottom:16px}
+.ticks{list-style:none;margin:20px 0 30px;display:grid;gap:10px}
+.ticks li{padding-left:34px;position:relative}
+.ticks li:before{content:"✦";position:absolute;left:0;color:var(--gold)}
+
+/* ---------- Why ---------- */
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;perspective:1000px}
+.why .w{padding:34px 26px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(17,42,29,.6);transition:.4s;transform-style:preserve-3d}
+.why .w:hover{transform:translateY(-10px) rotateX(6deg);border-color:var(--gold)}
+.why .ic{width:60px;height:60px;border-radius:16px;display:grid;place-items:center;font-size:1.6rem;margin-bottom:18px;background:linear-gradient(135deg,rgba(212,175,106,.25),rgba(47,158,99,.2));border:1px solid var(--line)}
+.why h3{font-size:1.4rem;margin-bottom:8px}
+.why p{color:var(--muted);font-size:.92rem}
+
+/* ---------- Reviews ---------- */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.rev{padding:32px;border-radius:var(--radius);background:linear-gradient(160deg,var(--card),#0b1d14);border:1px solid var(--line);position:relative}
+.rev:before{content:"“";position:absolute;top:6px;right:24px;font-family:'Cormorant Garamond';font-size:6rem;color:rgba(212,175,106,.18);line-height:1}
+.stars{color:var(--gold);letter-spacing:4px;margin-bottom:12px}
+.rev p{color:var(--muted);margin-bottom:18px;font-style:italic}
+.rev b{color:var(--gold2)}
+.note{margin-top:30px;text-align:center;font-size:.82rem;color:var(--muted)}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:860px;margin:0 auto;display:grid;gap:14px}
+.faq details{border:1px solid var(--line);border-radius:14px;background:rgba(17,42,29,.55);padding:4px 24px;transition:.3s}
+.faq details[open]{border-color:var(--gold);background:rgba(17,42,29,.9)}
+.faq summary{cursor:pointer;list-style:none;padding:18px 0;font-family:'Cormorant Garamond';font-size:1.35rem;font-weight:700;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:var(--gold);font-size:1.6rem;transition:.3s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq p{color:var(--muted);padding-bottom:20px}
+
+/* ---------- CTA band ---------- */
+.band{text-align:center;padding:90px 0;background:linear-gradient(135deg,rgba(47,158,99,.18),rgba(212,175,106,.14)),var(--bg2);border-block:1px solid var(--line)}
+.band h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:14px}
+.band p{color:var(--muted);margin-bottom:30px}
+
+/* ---------- Map ---------- */
+.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);filter:grayscale(.25) contrast(1.05)}
+.map iframe{width:100%;height:430px;display:block;border:0}
+
+/* ---------- Inner page ---------- */
+.page-hero{padding:190px 0 90px;text-align:center;background:radial-gradient(ellipse at 50% 0,rgba(47,158,99,.25),transparent 65%)}
+.page-hero h1{font-size:clamp(2.5rem,5.5vw,4.6rem);margin-bottom:16px}
+.page-hero p{color:var(--muted);max-width:680px;margin:0 auto 26px;font-size:1.08rem}
+.crumbs{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.svc-detail{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.svc-detail .pic{border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+.svc-detail .pic img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.svc-detail h2{font-size:2.5rem;margin-bottom:16px}
+.svc-detail p{color:var(--muted);margin-bottom:14px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.step{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(17,42,29,.6)}
+.step i{font-style:normal;font-family:'Orbitron';color:var(--gold);font-size:1.4rem}
+.step h3{font-size:1.35rem;margin:8px 0}
+.step p{color:var(--muted);font-size:.9rem}
+.mini{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.mini a{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card);transition:.3s}
+.mini a:hover{transform:translateY(-8px);border-color:var(--gold)}
+.mini img{aspect-ratio:4/3;object-fit:cover;width:100%}
+.mini span{display:block;padding:12px;font-size:.84rem;text-align:center}
+.areas{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.area{padding:22px;border:1px solid var(--line);border-radius:14px;background:rgba(17,42,29,.6);text-align:center;transition:.3s}
+.area:hover{border-color:var(--gold);transform:translateY(-6px) rotateX(8deg)}
+.area b{font-family:'Cormorant Garamond';font-size:1.4rem;display:block;color:var(--gold2)}
+.area span{font-size:.8rem;color:var(--muted)}
+.gal{columns:3;column-gap:20px}
+.gal figure{break-inside:avoid;margin-bottom:20px;border-radius:16px;overflow:hidden;position:relative;border:1px solid var(--line)}
+.gal img{width:100%;transition:transform .7s}
+.gal figure:hover img{transform:scale(1.08)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:30px 18px 14px;background:linear-gradient(transparent,rgba(7,18,13,.9));font-family:'Cormorant Garamond';font-size:1.25rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:50px}
+.info{display:grid;gap:18px}
+.info .row{display:flex;gap:16px;padding:22px;border:1px solid var(--line);border-radius:16px;background:rgba(17,42,29,.6)}
+.info .row .ic{font-size:1.5rem;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:rgba(212,175,106,.12);flex:none}
+.info b{color:var(--gold2);display:block;font-family:'Cormorant Garamond';font-size:1.25rem}
+.info span{color:var(--muted);font-size:.95rem}
+form{display:grid;gap:16px;padding:34px;border:1px solid var(--line);border-radius:22px;background:rgba(17,42,29,.7)}
+form h3{font-size:1.9rem}
+input,select,textarea{width:100%;padding:15px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(7,18,13,.8);color:var(--text);font:inherit}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--gold)}
+textarea{min-height:130px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* ---------- Footer ---------- */
+footer{background:#040c08;border-top:1px solid var(--line);padding:80px 0 0}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:50px}
+footer img.flogo{height:90px;width:auto;margin-bottom:16px}
+footer p,footer li,footer a{color:var(--muted);font-size:.94rem}
+footer h4{font-size:1.5rem;color:var(--gold2);margin-bottom:18px}
+footer ul{list-style:none;display:grid;gap:10px}
+footer a:hover{color:var(--gold2)}
+.copy{margin-top:60px;padding:22px 0;border-top:1px solid var(--line);text-align:center;font-size:.82rem;color:var(--muted)}
+
+/* ---------- Responsive ---------- */
+@media(max-width:1000px){
+  .hero .grid,.about-grid,.svc-detail,.contact-grid{grid-template-columns:1fr}
+  .cards,.reviews{grid-template-columns:repeat(2,1fr)}
+  .why,.steps,.areas{grid-template-columns:repeat(2,1fr)}
+  .mini{grid-template-columns:repeat(3,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .gal{columns:2}
+  .chip.c1{left:10px}.chip.c2{right:10px}
+}
+@media(max-width:900px){
+  .burger{display:block}
+  nav{position:fixed;top:0;right:-100%;width:min(340px,86%);height:100vh;background:#07120d;border-left:1px solid var(--line);padding:90px 20px 30px;transition:.4s;overflow:auto}
+  nav.open{right:0}
+  nav ul{flex-direction:column;align-items:stretch}
+  .dd{position:static;opacity:1;visibility:visible;transform:none;border:0;background:none;box-shadow:none;padding:0 0 0 12px;min-width:0}
+  .burger{position:relative;z-index:120}
+}
+@media(max-width:640px){
+  section{padding:70px 0}
+  .cards,.reviews,.why,.steps,.areas,.fgrid,.two{grid-template-columns:1fr}
+  .mini{grid-template-columns:repeat(2,1fr)}
+  .gal{columns:1}
+  .brand b{font-size:.72rem}.brand img{height:48px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- Intro loader -->
+<div id="loader">
+  <div class="ring"><span></span><span></span><span></span><span></span>
+    <img src="https://lakotadesigngroup.com/wp-content/uploads/2026/06/Lakota-Logo.webp" alt="Lakota Design Group logo">
+  </div>
+  <h2>Lakota Design Group</h2>
+  <div class="bar"><i></i></div>
+  <small>RENDERING YOUR OUTDOOR SPACE</small>
+</div>
+
+<canvas id="bg3d"></canvas>
+
+<header id="hdr">
+  <div class="container nav">
+    <a class="brand" href="#/home" aria-label="Lakota Design Group home">
+      <img src="https://lakotadesigngroup.com/wp-content/uploads/2026/06/Lakota-Logo.webp" alt="Lakota Design Group logo">
+      <b>Lakota Design Group<small>LANDSCAPING · SAN JOSE</small></b>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+    <nav id="nav">
+      <ul id="navlist"></ul>
+    </nav>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="container">
+    <div class="fgrid">
+      <div>
+        <img class="flogo" src="https://lakotadesigngroup.com/wp-content/uploads/2026/06/Lakota-Logo.webp" alt="Lakota Design Group logo">
+        <p>Locally owned landscaping company creating residential outdoor spaces with purpose, character and lasting appeal across San Jose, California.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#/home">Home</a></li>
+          <li><a href="#/about">About Us</a></li>
+          <li><a href="#/services">Services</a></li>
+          <li><a href="#/areas">Service Areas</a></li>
+          <li><a href="#/gallery">Gallery</a></li>
+          <li><a href="#/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Information</h4>
+        <ul>
+          <li>📍 5576 Cooney Pl, San Jose, CA 95123</li>
+          <li>📞 <a href="tel:+14088262888">(408) 826-2888</a></li>
+          <li>✉️ <a href="mailto:lakotadesigngroup@gmail.com">lakotadesigngroup@gmail.com</a></li>
+          <li>🕗 Working Hours: Mon – Sat, 8:00 AM – 6:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© <span id="yr"></span> Lakota Design Group. All rights reserved. · <a href="https://lakotadesigngroup.com/" target="_blank" rel="noopener">Official Website</a></div>
+  </div>
+</footer>
+
+<script>
+/* =====================================================
+   DATA  — edit text, images and reviews here
+   ===================================================== */
+const LOGO = "https://lakotadesigngroup.com/wp-content/uploads/2026/06/Lakota-Logo.webp";
+const MAP = `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3175.853445472809!2d-121.84800329999999!3d37.2511845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808e31e5ab8f9207%3A0x9915d66ac2e2a248!2sLakota%20Design%20Group!5e0!3m2!1sen!2s!4v1792439696391!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="Lakota Design Group on Google Maps"></iframe>`;
+
+const SERVICES = [
+ { id:"landscape-design", name:"Landscape Design", icon:"✏️",
+   img:"https://avatars.mds.yandex.net/i?id=7c272b99b076db3be53e21ddb305654b363284aa-5252493-images-thumbs&n=13",
+   short:"Custom layouts shaped around your home, site and lifestyle, with 3D visualization before we build.",
+   long:["Every great yard begins with a plan. We study your property, architecture and the way your family lives, then translate those insights into a layout that flows from the house to the horizon.","Using 3D visualization you can walk through the design before a single shovel hits the ground, so materials, planting and proportions feel right from day one."],
+   points:["Site analysis & concept layout","3D visualization and renderings","Plant and material selection","Garden planning for year-round interest"],
+   steps:[["Discover","We learn your vision, budget and how you want to use the space."],["Concept","A layout direction is drawn around your site and architecture."],["Visualize","3D views let you see the finished yard in advance."],["Refine","We fine-tune details until the plan feels perfect."]]},
+ { id:"landscape-lighting", name:"Landscape Lighting", icon:"💡",
+   img:"https://avatars.mds.yandex.net/i?id=7fb881ad3c8ba78de57ba4e01559359f8cd1317b-5281441-images-thumbs&n=13",
+   short:"Layered evening lighting that highlights architecture, pathways and planting with safety and drama.",
+   long:["Good lighting extends your living space into the night. We layer soft path lights, uplighting and accent fixtures to create depth, warmth and security without glare.","Fixtures are placed with care to flatter trees, stonework and your home’s facade, and are installed for dependable, low-maintenance performance."],
+   points:["Path, step and patio lighting","Architectural & tree uplighting","Warm, energy-efficient LED fixtures","Timers and smart control options"],
+   steps:[["Walk-through","We tour your property at dusk to map focal points."],["Lighting plan","A layered scheme balances beauty and safety."],["Install","Fixtures and wiring are neatly placed and concealed."],["Fine-tune","We adjust angles and brightness after dark."]]},
+ { id:"new-landscape-construction", name:"New Landscape Construction", icon:"🏗️",
+   img:"https://avatars.mds.yandex.net/i?id=03ad53a44afbbdf3a818f2b8e7a23fdf5c675158-3548851-images-thumbs&n=13",
+   short:"Complete ground-up outdoor builds, from grading and hardscape to planting, delivered as one cohesive project.",
+   long:["Starting from a blank lot or a tired yard, we build entire outdoor environments. Grading, drainage, hardscape, planting and finishing details are coordinated by one team so everything fits together.","Our construction approach keeps timelines clear and quality high, turning an approved design into a space you’ll love for years."],
+   points:["Grading, drainage and site prep","Patios, walkways and retaining features","Planting beds and irrigation","Final detailing and clean-up"],
+   steps:[["Plan","Final scope, materials and schedule are confirmed."],["Prep","Site is cleared, graded and prepared properly."],["Build","Hardscape, softscape and systems are installed."],["Finish","Punch-list walk-through before we hand over the keys."]]},
+ { id:"paver-installation", name:"Paver Installation", icon:"🧱",
+   img:"https://avatars.mds.yandex.net/i?id=13cd0937d64b9ab5681322f3e5ca50b93ccaf541-5382665-images-thumbs&n=13",
+   short:"Durable, elegant paver driveways, patios and walkways built on a properly compacted base.",
+   long:["Pavers bring texture, pattern and lasting strength to outdoor living areas. We help you choose the right stone, color and layout, then install over a carefully compacted base for a surface that stays level.","From entertaining patios to welcoming entry paths, our paver work balances curb appeal with everyday function."],
+   points:["Patios, driveways and walkways","Wide range of styles and colors","Proper base prep and drainage","Clean edges and tight joints"],
+   steps:[["Select","Choose paver style, pattern and color."],["Excavate","Proper depth and slope for drainage."],["Lay","Base compaction, precision laying and cutting."],["Lock in","Edge restraint, joint sand and final compaction."]]},
+ { id:"artificial-turf-installation", name:"Artificial Turf Installation", icon:"🌱",
+   img:"https://avatars.mds.yandex.net/i?id=63eaad01964a5f24e3eaa0f3c7a62f737e177030-4825391-images-thumbs&n=13",
+   short:"Lush, low-maintenance turf for lawns, play areas and pet-friendly yards that stays green all year.",
+   long:["Enjoy a green lawn without mowing, watering or reseeding. We install quality artificial turf over a well-prepared, free-draining base so it looks natural and performs well.","It’s a smart choice for busy families, pets and water-conscious California homeowners."],
+   points:["Natural-looking, soft turf","Pet-friendly and kid-friendly","Excellent drainage base","Seamless edges and clean finish"],
+   steps:[["Measure","We assess your area and select the right turf."],["Prepare","Old lawn removed and base graded and compacted."],["Install","Turf is laid, seamed and secured."],["Finish","Infill is brushed in for a natural look and feel."]]},
+ { id:"landscaping-project-management", name:"Landscaping Project Management", icon:"📋",
+   img:"https://avatars.mds.yandex.net/i?id=5dcb4b32a74c9727c38dbe35da7b0e8a7c327ee2-5876069-images-thumbs&n=13",
+   short:"One point of contact coordinating trades, materials and timelines from first concept to final completion.",
+   long:["Outdoor projects involve many moving parts. We coordinate designers, crews, suppliers and inspections so your project runs smoothly and communication stays clear.","You get a single point of contact and steady progress updates, with attention on quality, schedule and budget."],
+   points:["Scheduling and trade coordination","Material sourcing and approvals","Regular progress updates","Quality control through completion"],
+   steps:[["Scope","Define goals, budget and milestones."],["Coordinate","Align crews, materials and timelines."],["Monitor","Track progress and manage changes."],["Deliver","Final review and project close-out."]]}
+];
+
+const AREAS = [["San Jose","Our home base"],["Willow Glen","Residential gardens"],["Almaden Valley","Estate landscapes"],["Evergreen","Family yards"],["Cambrian Park","Patios & turf"],["Berryessa","Full redesigns"],["Santa Clara","Design & build"],["Campbell","Pavers & lighting"],["Los Gatos","Hillside projects"],["Saratoga","Luxury outdoors"],["Cupertino","Modern landscapes"],["Milpitas","Turf & hardscape"]];
+
+/* Replace these placeholders with real customer reviews (copy from your Google Business Profile). */
+const REVIEWS = [
+ {name:"Customer Name", text:"Add a real customer review here. Copy it word for word from your Google reviews.", rating:5},
+ {name:"Customer Name", text:"Add a real customer review here. Copy it word for word from your Google reviews.", rating:5},
+ {name:"Customer Name", text:"Add a real customer review here. Copy it word for word from your Google reviews.", rating:5}
+];
+
+const FAQS = [
+ ["Where do you work?","We serve homeowners in San Jose and surrounding Bay Area communities. See our Service Areas page for the full list."],
+ ["How does a project start?","It begins with a conversation. We learn about your goals, walk the property, and develop a layout direction before discussing materials and scope."],
+ ["Can I see the design before construction?","Yes. We use 3D visualization so you can review the look, flow and proportions of your yard before building begins."],
+ ["Do you handle the whole project?","Absolutely. We combine design, lighting, pavers, turf, construction and project management so one team guides you from concept through completion."],
+ ["Is artificial turf a good option for pets?","It can be. A properly installed turf system drains well and stays clean and green, which many pet owners appreciate."],
+ ["How do I get a quote?","Call (408) 826-2888, email lakotadesigngroup@gmail.com or use our contact page. We’re available Monday to Saturday, 8 AM to 6 PM."]
+];
+
+const WHY = [
+ ["🏡","Locally Owned","A San Jose team that knows local properties, climate and style."],
+ ["🧭","Concept to Completion","Design, build and coordination handled under one roof."],
+ ["🧊","3D Visualization","See your future outdoor space before construction begins."],
+ ["💎","Quality Materials","Carefully chosen pavers, turf, plants and lighting that last."]
+];
+
+/* =====================================================
+   HELPERS
+   ===================================================== */
+const FALLBACK = "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#14402a'/><stop offset='1' stop-color='#07120d'/></linearGradient></defs><rect width='800' height='600' fill='url(#g)'/><circle cx='400' cy='300' r='120' fill='none' stroke='#d4af6a' stroke-opacity='.5'/><text x='400' y='310' fill='#d4af6a' font-size='28' text-anchor='middle' font-family='serif'>Lakota Design Group</text></svg>`);
+const imgFail = el => { el.onerror = null; el.src = FALLBACK; };
+const $ = s => document.querySelector(s);
+const imgTag = (src, alt) => `<img src="${src}" alt="${alt}" loading="lazy" onerror="imgFail(this)">`;
+const stars = n => "★".repeat(n) + "☆".repeat(5 - n);
+
+function serviceCard(s){
+  return `<a class="card reveal tilt" href="#/service/${s.id}">
+    <div class="img">${imgTag(s.img, s.name + " by Lakota Design Group")}</div>
+    <div class="body"><h3>${s.icon} ${s.name}</h3><p>${s.short}</p><span class="more">Learn More →</span></div></a>`;
+}
+const pageHero = (crumb, title, text) => `<section class="page-hero"><div class="container">
+  <div class="crumbs"><a href="#/home">Home</a> / ${crumb}</div><h1 class="reveal">${title}</h1><p class="reveal">${text}</p></div></section>`;
+const ctaBand = () => `<div class="band"><div class="container reveal"><h2>Ready to Transform Your Outdoor Space?</h2><p>Tell us about your property and we’ll help shape the vision.</p><a class="btn gold" href="#/contact">Request a Consultation →</a></div></div>`;
+const reviewsHTML = () => `<div class="reviews">${REVIEWS.map(r => `<div class="rev reveal"><div class="stars">${stars(r.rating)}</div><p>${r.text}</p><b>— ${r.name}</b></div>`).join("")}</div>`;
+const faqHTML = () => `<div class="faq">${FAQS.map(f => `<details class="reveal"><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("")}</div>`;
+const whyHTML = () => `<div class="why">${WHY.map(w => `<div class="w reveal"><div class="ic">${w[0]}</div><h3>${w[1]}</h3><p>${w[2]}</p></div>`).join("")}</div>`;
+
+/* =====================================================
+   PAGES
+   ===================================================== */
+const PAGES = {
+ home(){ return `
+  <section class="hero"><div class="container grid">
+    <div>
+      <span class="eyebrow">Landscaping · San Jose, CA</span>
+      <h1>Outdoor Spaces With <em>Purpose,</em> Character &amp; Lasting Appeal</h1>
+      <p>Lakota Design Group blends landscape design, lighting, pavers, turf and construction into cohesive outdoor environments made for your home and lifestyle.</p>
+      <div class="btns"><a class="btn gold" href="#/contact">Get a Free Consultation →</a><a class="btn ghost" href="#/gallery">View Our Work</a></div>
+      <div class="stats"><div><b>6</b><span>Core Services</span></div><div><b>3D</b><span>Design Previews</span></div><div><b>Mon–Sat</b><span>8 AM – 6 PM</span></div></div>
+    </div>
+    <div class="hero-visual" id="heroVisual">
+      <div class="frame">${imgTag(SERVICES[0].img, "Landscape design by Lakota Design Group")}</div>
+      <div class="chip c1"><b>Concept → Completion</b>Full project guidance</div>
+      <div class="chip c2"><b>Locally Owned</b>Proudly serving San Jose</div>
+    </div>
+    <div class="scroll-hint">SCROLL</div>
+  </div></section>
+
+  <section class="alt" id="services"><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">What We Do</span><h2>Our Landscaping Services</h2><p>From the first sketch to the final stone, every service is designed to work together.</p></div>
+    <div class="cards">${SERVICES.map(serviceCard).join("")}</div>
+    <div class="center reveal"><a class="btn gold" href="https://lakotadesigngroup.com/services/" target="_blank" rel="noopener">Explore Services ↗</a></div>
+  </div></section>
+
+  <section id="about"><div class="container about-grid">
+    <div class="about-img reveal left"><div class="a">${imgTag(SERVICES[2].img, "New landscape construction")}</div><div class="badge"><b>100%</b>Locally Owned</div></div>
+    <div class="about-txt reveal right">
+      <span class="eyebrow">About Us</span>
+      <h2>Thoughtful Design. Careful Craftsmanship.</h2>
+      <p>We’re a San Jose landscaping team who believe a yard should feel like a natural extension of your home. Each project starts by understanding your vision, site, architecture and lifestyle.</p>
+      <p>With experience across landscape project management, 3D visualization, material selection and coordination, we guide you from concept through completion.</p>
+      <ul class="ticks"><li>Layouts tailored to each property</li><li>One team for design and build</li><li>Clear communication every step</li></ul>
+      <a class="btn gold" href="#/about">More About Us →</a>
+    </div>
+  </div></section>
+
+  <section class="alt" id="why"><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Why Choose Us</span><h2>Why Homeowners Choose Lakota</h2><p>A refined, collaborative process with results that last.</p></div>
+    ${whyHTML()}
+  </div></section>
+
+  <section id="reviews"><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Customer Reviews</span><h2>What Our Clients Say</h2><p>Kind words from homeowners we’ve had the pleasure of working with.</p></div>
+    ${reviewsHTML()}
+    <p class="note">Add your real customer reviews in the <code>REVIEWS</code> list at the top of the script.</p>
+  </div></section>
+
+  <section class="alt" id="faq"><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">FAQs</span><h2>Frequently Asked Questions</h2></div>
+    ${faqHTML()}
+  </div></section>
+
+  <section><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Find Us</span><h2>Visit Lakota Design Group</h2><p>5576 Cooney Pl, San Jose, CA 95123</p></div>
+    <div class="map reveal">${MAP}</div>
+  </div></section>
+  ${ctaBand()}`; },
+
+ about(){ return pageHero("About Us","About Lakota Design Group","A locally owned San Jose landscaping company focused on residential outdoor spaces with purpose, character and lasting appeal.") + `
+  <section><div class="container about-grid">
+    <div class="about-img reveal left"><div class="a">${imgTag(SERVICES[0].img,"Landscape design")}</div></div>
+    <div class="about-txt reveal right"><span class="eyebrow">Our Story</span><h2>Designing Landscapes That Feel Like Home</h2>
+      <p>Lakota Design Group brings together landscape design, garden planning, lighting, pavers, turf and construction to deliver cohesive environments customized to each property.</p>
+      <p>Our approach begins with understanding your vision, site, architecture and lifestyle before developing a thoughtful layout direction.</p>
+      <a class="btn ghost" href="https://lakotadesigngroup.com/about-us/" target="_blank" rel="noopener">Visit Official About Page ↗</a></div>
+  </div></section>
+  <section class="alt"><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Our Process</span><h2>From Concept to Completion</h2></div>
+    <div class="steps">
+      <div class="step reveal"><i>01</i><h3>Listen</h3><p>We start with your vision, site, architecture and lifestyle.</p></div>
+      <div class="step reveal"><i>02</i><h3>Design</h3><p>Layout direction and 3D visualization bring the idea to life.</p></div>
+      <div class="step reveal"><i>03</i><h3>Select</h3><p>Materials, plants, lighting and finishes are chosen with care.</p></div>
+      <div class="step reveal"><i>04</i><h3>Build</h3><p>Coordinated crews and project management deliver the result.</p></div>
+    </div>
+  </div></section>
+  <section><div class="container">
+    <div class="sec-head reveal"><span class="eyebrow">Expertise</span><h2>What We Bring to Every Project</h2></div>
+    <div class="why">
+      <div class="w reveal"><div class="ic">📐</div><h3>Landscape Design</h3><p>Garden planning and layouts tailored to your home.</p></div>
+      <div class="w reveal"><div class="ic">🧊</div><h3>3D Visualization</h3><p>Preview the design before construction begins.</p></div>
+      <div class="w reveal"><div class="ic">🪨</div><h3>Material Selection</h3><p>Pavers, turf, plants and lighting matched to your style.</p></div>
+      <div class="w reveal"><div class="ic">🗂️</div><h3>Project Coordination</h3><p>Smooth scheduling and communication throughout.</p></div>
+    </div>
+  </div></section>` + ctaBand(); },
+
+ services(){ return pageHero("Services","Our Landscaping Services","Six connected services that take your outdoor space from idea to finished environment.") + `
+  <section><div class="container"><div class="cards">${SERVICES.map(serviceCard).join("")}</div>
+  <div class="center reveal"><a class="btn ghost" href="https://lakotadesigngroup.com/services/" target="_blank" rel="noopener">Explore Services on Official Site ↗</a></div></div></section>` + ctaBand(); },
+
+ areas(){ return pageHero("Service Areas","Service Areas","Proudly serving San Jose and neighboring Bay Area communities.") + `
+  <section><div class="container"><div class="areas">${AREAS.map(a => `<div class="area reveal"><b>${a[0]}</b><span>${a[1]}</span></div>`).join("")}</div>
+  <p class="note">Don’t see your city? Contact us — we may still be able to help.</p></div></section>
+  <section class="alt"><div class="container"><div class="sec-head reveal"><h2>Based in San Jose</h2><p>5576 Cooney Pl, San Jose, CA 95123</p></div><div class="map reveal">${MAP}</div></div></section>` + ctaBand(); },
+
+ gallery(){ const caps = SERVICES.map(s => [s.img, s.name]); return pageHero("Gallery","Project Gallery","A look at the kinds of outdoor spaces we create.") + `
+  <section><div class="container"><div class="gal">${caps.map(c => `<figure class="reveal">${imgTag(c[0], c[1])}<figcaption>${c[1]}</figcaption></figure>`).join("")}</div>
+  <div class="center reveal"><a class="btn gold" href="https://lakotadesigngroup.com/gallery/" target="_blank" rel="noopener">See Full Gallery ↗</a></div></div></section>` + ctaBand(); },
+
+ contact(){ return pageHero("Contact Us","Contact Us","Tell us about your project. We’d love to hear from you.") + `
+  <section><div class="container contact-grid">
+    <div class="info reveal left">
+      <div class="row"><div class="ic">📍</div><div><b>Address</b><span>5576 Cooney Pl, San Jose, CA 95123</span></div></div>
+      <div class="row"><div class="ic">📞</div><div><b>Phone</b><span><a href="tel:+14088262888">(408) 826-2888</a></span></div></div>
+      <div class="row"><div class="ic">✉️</div><div><b>Email</b><span><a href="mailto:lakotadesigngroup@gmail.com">lakotadesigngroup@gmail.com</a></span></div></div>
+      <div class="row"><div class="ic">🕗</div><div><b>Working Hours</b><span>Monday – Saturday<br>8:00 AM – 6:00 PM</span></div></div>
+    </div>
+    <form class="reveal right" id="cform">
+      <h3>Request a Consultation</h3>
+      <div class="two"><input required name="name" placeholder="Your name"><input required type="tel" name="phone" placeholder="Phone"></div>
+      <input required type="email" name="email" placeholder="Email address">
+      <select name="service">${SERVICES.map(s => `<option>${s.name}</option>`).join("")}</select>
+      <textarea required name="msg" placeholder="Tell us about your project"></textarea>
+      <button class="btn gold" type="submit">Send Message →</button>
+    </form>
+  </div></section>
+  <section class="alt"><div class="container"><div class="map reveal">${MAP}</div></div></section>`; }
+};
+
+function servicePage(id){
+  const s = SERVICES.find(x => x.id === id); if(!s) return PAGES.services();
+  const others = SERVICES.filter(x => x.id !== id);
+  return pageHero(`<a href="#/services">Services</a> / ${s.name}`, s.name, s.short) + `
+  <section><div class="container svc-detail">
+    <div class="pic reveal left">${imgTag(s.img, s.name)}</div>
+    <div class="reveal right"><span class="eyebrow">${s.name}</span><h2>${s.icon} What You Get</h2>
+      ${s.long.map(p => `<p>${p}</p>`).join("")}
+      <ul class="ticks">${s.points.map(p => `<li>${p}</li>`).join("")}</ul>
+      <a class="btn gold" href="#/contact">Request a Quote →</a></div>
+  </div></section>
+  <section class="alt"><div class="container"><div class="sec-head reveal"><span class="eyebrow">How It Works</span><h2>Our ${s.name} Process</h2></div>
+    <div class="steps">${s.steps.map((st,i) => `<div class="step reveal"><i>0${i+1}</i><h3>${st[0]}</h3><p>${st[1]}</p></div>`).join("")}</div></div></section>
+  <section><div class="container"><div class="sec-head reveal"><h2>Explore More Services</h2></div>
+    <div class="mini">${others.map(o => `<a class="reveal" href="#/service/${o.id}">${imgTag(o.img, o.name)}<span>${o.name}</span></a>`).join("")}</div></div></section>` + ctaBand();
+}
+
+/* =====================================================
+   NAV + ROUTER
+   ===================================================== */
+$("#navlist").innerHTML = `
+  <li><a class="l" data-r="home" href="#/home">Home</a></li>
+  <li><a class="l" data-r="about" href="#/about">About Us</a></li>
+  <li><a class="l" data-r="services" href="#/services">Services ▾</a>
+    <div class="dd">${SERVICES.map(s => `<a href="#/service/${s.id}">${s.icon} ${s.name}</a>`).join("")}</div></li>
+  <li><a class="l" data-r="areas" href="#/areas">Service Areas</a></li>
+  <li><a class="l" data-r="gallery" href="#/gallery">Gallery</a></li>
+  <li><a class="l cta-top" data-r="contact" href="#/contact">Contact Us</a></li>`;
+
+let io;
+function observe(){
+  if(io) io.disconnect();
+  io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.12});
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+}
+
+function tiltInit(){
+  document.querySelectorAll(".tilt").forEach(c => {
+    c.addEventListener("mousemove", e => {
+      const r = c.getBoundingClientRect(), x = (e.clientX - r.left)/r.width - .5, y = (e.clientY - r.top)/r.height - .5;
+      c.style.transform = `perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateZ(10px)`;
+    });
+    c.addEventListener("mouseleave", () => c.style.transform = "");
+  });
+  const hv = $("#heroVisual");
+  if(hv){
+    window.addEventListener("mousemove", e => {
+      if(!document.body.contains(hv)) return;
+      const x = e.clientX/innerWidth - .5, y = e.clientY/innerHeight - .5;
+      hv.style.transform = `rotateY(${x*14}deg) rotateX(${-y*10}deg)`;
+    });
+  }
+}
+
+function route(){
+  const h = location.hash.replace(/^#\/?/, "") || "home";
+  const [page, arg] = h.split("/");
+  const app = $("#app");
+  app.innerHTML = page === "service" ? servicePage(arg) : (PAGES[page] ? PAGES[page]() : PAGES.home());
+  document.querySelectorAll("nav a.l").forEach(a => a.classList.toggle("active", a.dataset.r === (page === "service" ? "services" : page) && !a.classList.contains("cta-top")));
+  $("#nav").classList.remove("open");
+  window.scrollTo({top:0, behavior:"instant"});
+  observe(); tiltInit();
+  const f = $("#cform");
+  if(f) f.addEventListener("submit", e => {
+    e.preventDefault();
+    const d = new FormData(f);
+    const body = `Name: ${d.get("name")}\nPhone: ${d.get("phone")}\nEmail: ${d.get("email")}\nService: ${d.get("service")}\n\n${d.get("msg")}`;
+    location.href = `mailto:lakotadesigngroup@gmail.com?subject=${encodeURIComponent("Website inquiry – " + d.get("service"))}&body=${encodeURIComponent(body)}`;
+  });
+  document.title = "Lakota Design Group | Luxury Landscaping in San Jose, CA";
+}
+addEventListener("hashchange", route);
+$("#burger").onclick = () => $("#nav").classList.toggle("open");
+addEventListener("scroll", () => $("#hdr").classList.toggle("scrolled", scrollY > 30), {passive:true});
+$("#yr").textContent = new Date().getFullYear();
+route();
+setTimeout(() => $("#loader").classList.add("hide"), 2400);
+
+/* =====================================================
+   3D WIREFRAME TERRAIN (reacts to scroll)
+   ===================================================== */
+(function(){
+  const cv = $("#bg3d"), ctx = cv.getContext("2d");
+  let W, H, t = 0, sy = 0, target = 0;
+  const resize = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; };
+  resize(); addEventListener("resize", resize);
+  addEventListener("scroll", () => target = scrollY, {passive:true});
+  const COLS = 36, ROWS = 26;
+  function draw(){
+    sy += (target - sy) * .06; t += .012;
+    ctx.clearRect(0,0,W,H);
+    const cam = 520, tilt = .9 + Math.min(sy/6000, .25);
+    const pts = [];
+    for(let r=0;r<ROWS;r++){ pts[r]=[];
+      for(let c=0;c<COLS;c++){
+        const x = (c-COLS/2)*95, z = r*95 - (sy*.6 % 95);
+        const y = Math.sin(c*.5 + t + r*.3)*38 + Math.cos(r*.45 - t)*30;
+        const yy = y*Math.cos(tilt) - (z)*Math.sin(tilt)*.0, zz = z + 200;
+        const p = 700/(zz+cam*.5);
+        pts[r][c] = {x: W/2 + x*p, y: H*.78 + (yy + 260 - zz*.18)*p*.9 - zz*.05, a: Math.max(0, 1 - r/ROWS)};
+      }}
+    ctx.lineWidth = 1;
+    for(let r=0;r<ROWS;r++) for(let c=0;c<COLS;c++){
+      const p = pts[r][c];
+      ctx.strokeStyle = `rgba(212,175,106,${p.a*.35})`;
+      if(c<COLS-1){ ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(pts[r][c+1].x,pts[r][c+1].y); ctx.stroke(); }
+      if(r<ROWS-1){ ctx.strokeStyle = `rgba(47,158,99,${p.a*.4})`; ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(pts[r+1][c].x,pts[r+1][c].y); ctx.stroke(); }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
